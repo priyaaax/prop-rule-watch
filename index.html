@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prop Rule Watch</title>
+<meta name="description" content="A dated record of rule changes at futures prop firms. See what changed after the day you bought your account.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+html { color-scheme: light; }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+/* Layout: one narrow reading column. The change log is a dated ledger with a mono date gutter on the left that stacks above each entry on phones. */
+:root {
+  --bg: #EDF1F4;
+  --surface: #FAFCFD;
+  --ink: #15202B;
+  --muted: #536171;
+  --line: #CDD6DE;
+  --accent: #0E5C78;
+  --accent-ink: #FFFFFF;
+  --chip: #DFE6EC;
+  --warn-bg: #FBECC9;
+  --warn-ink: #734300;
+  --ok-bg: #D9EEE3;
+  --ok-ink: #14533A;
+  --bad-bg: #F7DCD7;
+  --bad-ink: #84210F;
+  --display: "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F151B;
+    --surface: #17202A;
+    --ink: #E5EBF1;
+    --muted: #94A2B1;
+    --line: #2B3744;
+    --accent: #63BCDA;
+    --accent-ink: #0B1920;
+    --chip: #232E3A;
+    --warn-bg: #3B2B0B;
+    --warn-ink: #F3C06A;
+    --ok-bg: #123526;
+    --ok-ink: #8ED9B4;
+    --bad-bg: #40170F;
+    --bad-ink: #F5A696;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F151B;
+  --surface: #17202A;
+  --ink: #E5EBF1;
+  --muted: #94A2B1;
+  --line: #2B3744;
+  --accent: #63BCDA;
+  --accent-ink: #0B1920;
+  --chip: #232E3A;
+  --warn-bg: #3B2B0B;
+  --warn-ink: #F3C06A;
+  --ok-bg: #123526;
+  --ok-ink: #8ED9B4;
+  --bad-bg: #40170F;
+  --bad-ink: #F5A696;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.55;
+  padding-inline: 16px;
+  padding-block: 28px 56px;
+}
+.wrap {
+  max-width: 44rem;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+a { color: var(--accent); text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Masthead */
+.mast { display: flex; flex-direction: column; gap: 0.6rem; }
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+h1 {
+  font-family: var(--display);
+  font-stretch: 78%;
+  font-weight: 800;
+  font-size: clamp(2.2rem, 9vw, 3.4rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: balance;
+}
+.lede { margin: 0; max-width: 36rem; font-size: 1.05rem; }
+.count {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+.notice {
+  margin: 0;
+  padding: 0.7rem 0.9rem;
+  background: var(--warn-bg);
+  color: var(--warn-ink);
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+
+/* Sections */
+section { display: flex; flex-direction: column; gap: 1rem; }
+h2 {
+  font-family: var(--display);
+  font-stretch: 85%;
+  font-weight: 700;
+  font-size: 1.45rem;
+  line-height: 1.15;
+  margin: 0;
+  padding-top: 1rem;
+  border-top: 2px solid var(--ink);
+  text-wrap: balance;
+}
+.sub { margin: 0; color: var(--muted); font-size: 0.93rem; max-width: 36rem; }
+
+/* Forms */
+.fields { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+.field { display: flex; flex-direction: column; gap: 0.3rem; flex: 1 1 11rem; min-width: 0; }
+.field label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+select, input {
+  font: inherit;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 0.55rem 0.6rem;
+  width: 100%;
+  min-width: 0;
+}
+input[type="number"] { font-family: var(--mono); font-variant-numeric: tabular-nums; }
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.panel p { margin: 0; }
+.group-title {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin: 0;
+}
+.empty { color: var(--muted); font-size: 0.93rem; margin: 0; }
+
+/* Filter chips */
+.chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.chip {
+  font: inherit;
+  font-size: 0.85rem;
+  color: var(--ink);
+  background: var(--chip);
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.3rem 0.75rem;
+  cursor: pointer;
+}
+.chip[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); }
+
+/* Ledger */
+.ledger { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.entry {
+  display: grid;
+  grid-template-columns: 7.2rem minmax(0, 1fr);
+  gap: 0.25rem 1rem;
+  padding-block: 0.95rem;
+  border-bottom: 1px solid var(--line);
+}
+.ledger .entry:first-child { padding-top: 0; }
+.ledger .entry:last-child { border-bottom: 0; padding-bottom: 0; }
+.when {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.15rem;
+}
+.what { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+.firm { font-weight: 600; font-size: 0.9rem; }
+.tag {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+.tag-warn { background: var(--warn-bg); color: var(--warn-ink); }
+.tag-plain { background: var(--chip); color: var(--ink); }
+.tag-ok { background: var(--ok-bg); color: var(--ok-ink); }
+.tag-open { border: 1px dashed var(--muted); color: var(--muted); }
+.entry h3 {
+  font-family: var(--body);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.35;
+  margin: 0;
+}
+.entry p { margin: 0; font-size: 0.93rem; color: var(--muted); }
+.src { font-size: 0.82rem; overflow-wrap: anywhere; }
+@media (max-width: 520px) {
+  .entry { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Consistency check */
+.verdict {
+  align-self: flex-start;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 3px;
+}
+.verdict-ok { background: var(--ok-bg); color: var(--ok-ink); }
+.verdict-bad { background: var(--bad-bg); color: var(--bad-ink); }
+.figures { display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+.figure { display: flex; flex-direction: column; gap: 0.1rem; }
+.figure span:first-child {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.figure span:last-child {
+  font-family: var(--mono);
+  font-size: 1.35rem;
+  font-variant-numeric: tabular-nums;
+}
+.small { font-size: 0.85rem; color: var(--muted); margin: 0; overflow-wrap: anywhere; }
+footer { border-top: 1px solid var(--line); padding-top: 1rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="mast">
+    <p class="eyebrow">Futures prop firms</p>
+    <h1>Prop Rule Watch</h1>
+    <p class="lede">A dated record of rule changes at futures prop firms, so you can see what changed after the day you bought your account.</p>
+    <p class="count" id="count">Loading the change log…</p>
+    <p class="notice">Prototype. Entries come from public write-ups, not from the firms themselves. Confirm any rule with your firm before you trade on it or request a payout.</p>
+  </header>
+
+  <section aria-labelledby="since-h">
+    <h2 id="since-h">What changed since I bought my account?</h2>
+    <p class="sub">Pick your firm and the day you bought or last reset the account. A reset can count as a new purchase at some firms.</p>
+    <div class="fields">
+      <div class="field">
+        <label for="since-firm">Firm</label>
+        <select id="since-firm"></select>
+      </div>
+      <div class="field">
+        <label for="since-date">Bought or reset on</label>
+        <input type="date" id="since-date" value="2026-01-01">
+      </div>
+    </div>
+    <div class="panel" id="since-out">
+      <p class="empty">Changes for your firm appear here once the log has loaded.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="log-h">
+    <h2 id="log-h">Change log</h2>
+    <div class="chips" id="chips" role="group" aria-label="Filter by firm"></div>
+    <ol class="ledger" id="ledger">
+      <li class="empty">Loading the change log…</li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="check-h">
+    <h2 id="check-h">Payout consistency check</h2>
+    <p class="sub">A consistency rule caps how much of your total profit can come from your single best day. Check where you stand before you request a payout.</p>
+    <div class="fields">
+      <div class="field">
+        <label for="c-total">Total profit ($)</label>
+        <input type="number" id="c-total" inputmode="decimal" min="0" step="any" value="3000">
+      </div>
+      <div class="field">
+        <label for="c-best">Best day ($)</label>
+        <input type="number" id="c-best" inputmode="decimal" min="0" step="any" value="1400">
+      </div>
+    </div>
+    <div class="fields">
+      <div class="field">
+        <label for="c-preset">Rule</label>
+        <select id="c-preset"><option value="">Custom</option></select>
+      </div>
+      <div class="field">
+        <label for="c-pct">Limit (%)</label>
+        <input type="number" id="c-pct" inputmode="decimal" min="1" max="100" step="any" value="40">
+      </div>
+    </div>
+    <div class="panel" id="c-out" aria-live="polite"></div>
+    <p class="small" id="c-example">The figures above are an example. Replace them with your own.</p>
+    <p class="small" id="c-preset-note"></p>
+    <p class="small" id="c-none"></p>
+  </section>
+
+  <footer>
+    <p class="small">This page is not affiliated with any prop firm. Firms calculate consistency in different ways, and some apply it only in the evaluation or only once funded. Your firm's own dashboard and written rules decide the outcome.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  var APPLIES = {
+    existing: ["Existing accounts", "tag-warn"],
+    "new": ["New accounts", "tag-plain"],
+    product: ["New product", "tag-plain"],
+    unknown: ["Not stated", "tag-open"]
+  };
+  var state = { changes: [], presets: [], firm: "all", status: "loading" };
+
+  function $(id) { return document.getElementById(id); }
+  function el(tag, cls, text) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function parseISO(s) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(typeof s === "string" ? s : "");
+    return m ? { y: +m[1], m: +m[2], d: +m[3] } : null;
+  }
+  function fmtDate(s) {
+    var p = parseISO(s);
+    return p ? p.d + " " + MONTHS[p.m - 1] + " " + p.y : "";
+  }
+  function whenLabel(c) { return typeof c.date_label === "string" && c.date_label ? c.date_label : fmtDate(c.date); }
+  function safeUrl(u) { return typeof u === "string" && /^https:\/\//.test(u) ? u : null; }
+  function money(n) { return "$" + Math.round(n).toLocaleString("en-US"); }
+  function str(v) { return typeof v === "string" ? v : ""; }
+
+  function entryNode(c) {
+    var li = el("li", "entry");
+    li.appendChild(el("div", "when", whenLabel(c)));
+    var what = el("div", "what");
+    var meta = el("div", "meta");
+    meta.appendChild(el("span", "firm", str(c.firm)));
+    var a = APPLIES[c.applies] || APPLIES.unknown;
+    meta.appendChild(el("span", "tag " + a[1], a[0]));
+    if (c.confirmed === true) meta.appendChild(el("span", "tag tag-ok", "Confirmed by firm"));
+    what.appendChild(meta);
+    what.appendChild(el("h3", null, str(c.title)));
+    if (str(c.detail)) what.appendChild(el("p", null, str(c.detail)));
+    var src = el("div", "src");
+    [[c.source_url, c.source_name], [c.source2_url, c.source2_name]].forEach(function (s, i) {
+      var u = safeUrl(s[0]);
+      if (!u) return;
+      if (src.childNodes.length) src.appendChild(document.createTextNode(" · "));
+      else src.appendChild(document.createTextNode("Source: "));
+      var link = el("a", null, str(s[1]) || "link");
+      link.href = u;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      src.appendChild(link);
+    });
+    if (src.childNodes.length) what.appendChild(src);
+    li.appendChild(what);
+    return li;
+  }
+
+  function sortedChanges() {
+    return state.changes.slice().sort(function (a, b) {
+      return a.date < b.date ? 1 : a.date > b.date ? -1 : 0;
+    });
+  }
+  function firms() {
+    var seen = {};
+    state.changes.forEach(function (c) { seen[c.firm] = true; });
+    return Object.keys(seen).sort();
+  }
+
+  function renderCount() {
+    var n = $("count");
+    if (state.status === "loading") { n.textContent = "Loading the change log…"; return; }
+    if (state.status === "off") { n.textContent = "The change log could not load in this view."; return; }
+    if (!state.changes.length) { n.textContent = "No changes logged yet."; return; }
+    var latest = sortedChanges()[0];
+    n.textContent = state.changes.length + " changes logged across " + firms().length + " firms. Latest entry: " + whenLabel(latest) + ".";
+  }
+
+  function renderChips() {
+    var box = $("chips");
+    box.textContent = "";
+    if (!state.changes.length) return;
+    ["all"].concat(firms()).forEach(function (f) {
+      var b = el("button", "chip", f === "all" ? "All firms" : f);
+      b.type = "button";
+      b.setAttribute("aria-pressed", String(state.firm === f));
+      b.addEventListener("click", function () {
+        state.firm = f;
+        renderChips();
+        renderLedger();
+      });
+      box.appendChild(b);
+    });
+  }
+
+  function renderLedger() {
+    var list = $("ledger");
+    list.textContent = "";
+    if (state.status === "loading") { list.appendChild(el("li", "empty", "Loading the change log…")); return; }
+    if (state.status === "off") {
+      list.appendChild(el("li", "empty", "The change log could not load in this view. Reload the page to try again."));
+      return;
+    }
+    var rows = sortedChanges().filter(function (c) { return state.firm === "all" || c.firm === state.firm; });
+    if (!rows.length) {
+      list.appendChild(el("li", "empty", "No changes logged yet. Entries appear here as they are added."));
+      return;
+    }
+    rows.forEach(function (c) { list.appendChild(entryNode(c)); });
+  }
+
+  function renderSinceOptions() {
+    var sel = $("since-firm");
+    var current = sel.value;
+    sel.textContent = "";
+    firms().forEach(function (f) {
+      var o = el("option", null, f);
+      o.value = f;
+      sel.appendChild(o);
+    });
+    if (current && firms().indexOf(current) !== -1) sel.value = current;
+  }
+
+  function renderSince() {
+    var out = $("since-out");
+    out.textContent = "";
+    if (state.status !== "ready" || !state.changes.length) {
+      out.appendChild(el("p", "empty", state.status === "off"
+        ? "The change log could not load in this view."
+        : "Changes for your firm appear here once the log has loaded."));
+      return;
+    }
+    var firm = $("since-firm").value;
+    var date = $("since-date").value;
+    if (!parseISO(date)) {
+      out.appendChild(el("p", "empty", "Enter the date you bought or last reset the account."));
+      return;
+    }
+    var rows = sortedChanges().filter(function (c) {
+      return c.firm === firm && (str(c.date_to) || c.date) >= date;
+    });
+    if (!rows.length) {
+      out.appendChild(el("p", null, "Nothing is logged for " + firm + " since " + fmtDate(date) + "."));
+      out.appendChild(el("p", "small", "That means nothing in this log. It does not prove that nothing changed."));
+      return;
+    }
+    out.appendChild(el("p", null, rows.length + (rows.length === 1 ? " change" : " changes") + " logged for " + firm + " since " + fmtDate(date) + "."));
+    var first = rows.filter(function (c) { return c.applies === "existing" || !APPLIES[c.applies] || c.applies === "unknown"; });
+    var rest = rows.filter(function (c) { return c.applies === "new" || c.applies === "product"; });
+    [["Check these first: they may reach your account", first],
+     ["For new accounts or new products", rest]].forEach(function (g) {
+      if (!g[1].length) return;
+      out.appendChild(el("p", "group-title", g[0]));
+      var ol = el("ol", "ledger");
+      g[1].forEach(function (c) { ol.appendChild(entryNode(c)); });
+      out.appendChild(ol);
+    });
+  }
+
+  function renderPresets() {
+    var sel = $("c-preset");
+    var current = sel.value;
+    sel.textContent = "";
+    var custom = el("option", null, "Custom");
+    custom.value = "";
+    sel.appendChild(custom);
+    var withRule = state.presets.filter(function (p) { return typeof p.pct === "number" && p.pct > 0; })
+      .sort(function (a, b) { return (a.firm + a.account).localeCompare(b.firm + b.account); });
+    withRule.forEach(function (p) {
+      var o = el("option", null, p.firm + " · " + p.account + " · " + p.pct + "%");
+      o.value = p.id;
+      sel.appendChild(o);
+    });
+    if (current && withRule.some(function (p) { return p.id === current; })) sel.value = current;
+    var none = state.presets.filter(function (p) { return p.pct === 0; })
+      .map(function (p) { return p.firm + " " + p.account; }).sort();
+    $("c-none").textContent = none.length ? "No consistency rule reported for: " + none.join(", ") + "." : "";
+    renderPresetNote();
+  }
+
+  function renderPresetNote() {
+    var note = $("c-preset-note");
+    note.textContent = "";
+    var id = $("c-preset").value;
+    var p = state.presets.filter(function (x) { return x.id === id; })[0];
+    if (!p) return;
+    note.appendChild(document.createTextNode("Rule as reported " + str(p.as_of) + ". "));
+    var u = safeUrl(p.source_url);
+    if (u) {
+      var a = el("a", null, "Source: " + (str(p.source_name) || "link"));
+      a.href = u;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      note.appendChild(a);
+    }
+  }
+
+  function renderCheck() {
+    var out = $("c-out");
+    out.textContent = "";
+    var total = parseFloat($("c-total").value);
+    var best = parseFloat($("c-best").value);
+    var pct = parseFloat($("c-pct").value);
+    if (!(total > 0) || !(best > 0) || !(pct > 0) || pct > 100) {
+      out.appendChild(el("p", "empty", "Enter a total profit and a best day above zero, and a limit between 1 and 100."));
+      return;
+    }
+    var share = best / total * 100;
+    var ok = share <= pct + 1e-9;
+    var need = best / (pct / 100);
+    var more = Math.max(0, need - total);
+    out.appendChild(el("span", "verdict " + (ok ? "verdict-ok" : "verdict-bad"), ok ? "Within the limit" : "Over the limit"));
+    var figs = el("div", "figures");
+    [["Best day share", share.toFixed(1) + "%"], ["Limit", pct + "%"], ["Total profit needed", money(Math.ceil(need))]].forEach(function (f) {
+      var d = el("div", "figure");
+      d.appendChild(el("span", null, f[0]));
+      d.appendChild(el("span", null, f[1]));
+      figs.appendChild(d);
+    });
+    out.appendChild(figs);
+    if (ok) {
+      out.appendChild(el("p", null, "Your best day of " + money(best) + " is " + share.toFixed(1) + "% of your total profit, inside the " + pct + "% limit."));
+    } else {
+      out.appendChild(el("p", null, "You need about " + money(Math.ceil(more)) + " more profit, earned without a new best day above " + money(best) + ", before your best day falls to " + pct + "% of the total."));
+    }
+    if (best > total) {
+      out.appendChild(el("p", "small", "Your best day is larger than your total profit, so other days lost money."));
+    }
+  }
+
+  function renderAll() {
+    renderCount();
+    renderChips();
+    renderLedger();
+    renderSinceOptions();
+    renderSince();
+  }
+
+  $("since-firm").addEventListener("change", renderSince);
+  $("since-date").addEventListener("input", renderSince);
+  ["c-total", "c-best"].forEach(function (id) {
+    $(id).addEventListener("input", function () { $("c-example").hidden = true; renderCheck(); });
+  });
+  $("c-pct").addEventListener("input", function () {
+    $("c-preset").value = "";
+    renderPresetNote();
+    renderCheck();
+  });
+  $("c-preset").addEventListener("change", function () {
+    var id = $("c-preset").value;
+    var p = state.presets.filter(function (x) { return x.id === id; })[0];
+    if (p) $("c-pct").value = p.pct;
+    renderPresetNote();
+    renderCheck();
+  });
+
+  renderCheck();
+
+  function off() { state.status = "off"; renderAll(); }
+
+  function load(name) {
+    return fetch("data/" + name + ".json", { cache: "no-store" }).then(function (r) {
+      if (!r.ok) throw new Error(name);
+      return r.json();
+    });
+  }
+  load("changes").then(function (rows) {
+    state.changes = (Array.isArray(rows) ? rows : []).filter(function (c) {
+      return c && parseISO(c.date) && str(c.firm) && str(c.title);
+    });
+    state.status = "ready";
+    renderAll();
+  }).catch(off);
+  load("presets").then(function (rows) {
+    state.presets = (Array.isArray(rows) ? rows : []).filter(function (p) {
+      return p && str(p.firm) && str(p.account) && typeof p.pct === "number";
+    });
+    renderPresets();
+  }).catch(function () {});
+})();
+</script>
+</body>
+</html>

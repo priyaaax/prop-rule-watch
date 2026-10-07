@@ -1,0 +1,155 @@
+[
+  {
+    "id": "apex-pa",
+    "account": "Performance Account (funded)",
+    "as_of": "Jul 2026 (an April write-up said 30%, so check)",
+    "firm": "Apex Trader Funding",
+    "pct": 50,
+    "source_name": "Curved Trading",
+    "source_url": "https://curvedtrading.com/articles/en/reviews/apex-trader-funding-review/"
+  },
+  {
+    "id": "lucid-daily-funded",
+    "account": "LucidDaily (funded)",
+    "as_of": "Sep 2026",
+    "firm": "Lucid Trading",
+    "pct": 0,
+    "source_name": "Prop Trading Vibes",
+    "source_url": "https://www.proptradingvibes.com/blog/lucid-trading-payout-rules"
+  },
+  {
+    "id": "lucid-direct",
+    "account": "LucidDirect",
+    "as_of": "Sep 2026",
+    "firm": "Lucid Trading",
+    "pct": 20,
+    "source_name": "Prop Trading Vibes",
+    "source_url": "https://www.proptradingvibes.com/blog/lucid-trading-payout-rules"
+  },
+  {
+    "id": "lucid-flex-funded",
+    "account": "LucidFlex (funded)",
+    "as_of": "Sep 2026",
+    "firm": "Lucid Trading",
+    "pct": 0,
+    "source_name": "Prop Trading Vibes",
+    "source_url": "https://www.proptradingvibes.com/blog/lucid-trading-payout-rules"
+  },
+  {
+    "id": "lucid-pro-legacy",
+    "account": "LucidPro funded (legacy)",
+    "as_of": "Sep 2026",
+    "firm": "Lucid Trading",
+    "pct": 35,
+    "source_name": "Prop Trading Vibes",
+    "source_url": "https://www.proptradingvibes.com/blog/lucid-trading-payout-rules"
+  },
+  {
+    "id": "lucid-pro-new",
+    "account": "LucidPro funded (new accounts)",
+    "as_of": "Sep 2026",
+    "firm": "Lucid Trading",
+    "pct": 40,
+    "source_name": "Prop Trading Vibes",
+    "source_url": "https://www.proptradingvibes.com/blog/lucid-trading-payout-rules"
+  },
+  {
+    "id": "mff-rapid",
+    "account": "Rapid 50K (evaluation)",
+    "as_of": "Aug 2026",
+    "firm": "MyFundedFutures",
+    "pct": 50,
+    "source_name": "Finance Magnates",
+    "source_url": "https://www.financemagnates.com/forex/myfundedfutures-trades-intraday-drawdown-for-a-30-consistency-rule/"
+  },
+  {
+    "id": "mff-rapid-eod",
+    "account": "Rapid EOD 50K (evaluation)",
+    "as_of": "Aug 2026",
+    "firm": "MyFundedFutures",
+    "pct": 30,
+    "source_name": "Finance Magnates",
+    "source_url": "https://www.financemagnates.com/forex/myfundedfutures-trades-intraday-drawdown-for-a-30-consistency-rule/"
+  },
+  {
+    "id": "tpt-pro",
+    "account": "PRO (funded)",
+    "as_of": "May 2026",
+    "firm": "Take Profit Trader",
+    "pct": 0,
+    "source_name": "PipBack",
+    "source_url": "https://pipback.com/blog/take-profit-trader-2026-review-payout-rules-explained"
+  },
+  {
+    "id": "tpt-test",
+    "account": "Test (evaluation)",
+    "as_of": "May 2026",
+    "firm": "Take Profit Trader",
+    "pct": 50,
+    "source_name": "PipBack",
+    "source_url": "https://pipback.com/blog/take-profit-trader-2026-review-payout-rules-explained"
+  },
+  {
+    "id": "topstep-consistency",
+    "account": "Express Funded, Consistency path",
+    "as_of": "Jul 2026",
+    "firm": "Topstep",
+    "pct": 40,
+    "source_name": "Curved Trading",
+    "source_url": "https://curvedtrading.com/articles/en/reviews/topstep-review/"
+  },
+  {
+    "id": "tradeify-growth",
+    "account": "Growth (funded)",
+    "as_of": "Sep 2026",
+    "firm": "Tradeify",
+    "pct": 35,
+    "source_name": "TradeTanto",
+    "source_url": "https://tradetanto.com/learn/tradeify-rules-explained-what-every-trader-should-know"
+  },
+  {
+    "id": "tradeify-lightning-1",
+    "account": "Lightning, first payout",
+    "as_of": "Sep 2026",
+    "firm": "Tradeify",
+    "pct": 20,
+    "source_name": "TradeTanto",
+    "source_url": "https://tradetanto.com/learn/tradeify-rules-explained-what-every-trader-should-know"
+  },
+  {
+    "id": "tradeify-lightning-3",
+    "account": "Lightning, later payouts",
+    "as_of": "Sep 2026",
+    "firm": "Tradeify",
+    "pct": 30,
+    "source_name": "TradeTanto",
+    "source_url": "https://tradetanto.com/learn/tradeify-rules-explained-what-every-trader-should-know"
+  },
+  {
+    "id": "tradeify-lightning-2",
+    "account": "Lightning, second payout",
+    "as_of": "Sep 2026",
+    "firm": "Tradeify",
+    "pct": 25,
+    "source_name": "TradeTanto",
+    "source_url": "https://tradetanto.com/learn/tradeify-rules-explained-what-every-trader-should-know"
+  },
+  {
+    "id": "tradeify-select-eval",
+    "account": "Select (evaluation)",
+    "as_of": "Sep 2026",
+    "firm": "Tradeify",
+    "pct": 40,
+    "source_name": "TradeTanto",
+    "source_url": "https://tradetanto.com/learn/tradeify-rules-explained-what-every-trader-should-know"
+  },
+  {
+    "id": "tradeify-select-funded",
+    "account": "Select (funded)",
+    "as_of": "Sep 2026",
+    "firm": "Tradeify",
+    "pct": 0,
+    "source_name": "TradeTanto",
+    "source_url": "https://tradetanto.com/learn/tradeify-rules-explained-what-every-trader-should-know"
+  }
+]
