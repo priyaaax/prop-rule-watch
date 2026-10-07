@@ -2,11 +2,11 @@
   {
     "id": "apex-pa",
     "account": "Performance Account (funded)",
-    "as_of": "Jul 2026 (an April write-up said 30%, so check)",
+    "as_of": "on Apex's help center, page updated 24 Apr 2026",
     "firm": "Apex Trader Funding",
     "pct": 50,
-    "source_name": "Curved Trading",
-    "source_url": "https://curvedtrading.com/articles/en/reviews/apex-trader-funding-review/"
+    "source_name": "Apex help center",
+    "source_url": "https://apextraderfunding.com/help-center/additional-helpful-items/50-consistency-requirement/"
   },
   {
     "id": "lucid-daily-funded",
@@ -65,11 +65,11 @@
   {
     "id": "mff-rapid-eod",
     "account": "Rapid EOD 50K (evaluation)",
-    "as_of": "Aug 2026",
+    "as_of": "on MFF's help center, 24 Aug 2026",
     "firm": "MyFundedFutures",
     "pct": 30,
-    "source_name": "Finance Magnates",
-    "source_url": "https://www.financemagnates.com/forex/myfundedfutures-trades-intraday-drawdown-for-a-30-consistency-rule/"
+    "source_name": "MFF help center",
+    "source_url": "https://help.myfundedfutures.com/en/articles/16158363-rapid-eod-50k-a-comprehensive-look"
   },
   {
     "id": "tpt-pro",

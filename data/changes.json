@@ -28,11 +28,13 @@
     "date": "2026-08-05",
     "date_label": "5-6 Aug 2026",
     "date_to": "2026-08-06",
-    "detail": "$3,000 target, $2,000 maximum loss, end-of-day trailing drawdown. The existing Rapid 50K keeps its 50% rule.",
+    "detail": "$3,000 target, $2,000 maximum loss, end-of-day trailing drawdown, 4 trading days minimum. The rules are confirmed on MFF's help center; the launch date comes from Finance Magnates.",
     "firm": "MyFundedFutures",
     "source_name": "Finance Magnates",
     "source_url": "https://www.financemagnates.com/forex/myfundedfutures-trades-intraday-drawdown-for-a-30-consistency-rule/",
-    "title": "New 50K Rapid EOD evaluation with a 30% consistency rule"
+    "title": "New 50K Rapid EOD evaluation with a 30% consistency rule",
+    "confirmed": true,
+    "official_url": "https://help.myfundedfutures.com/en/articles/16158363-rapid-eod-50k-a-comprehensive-look"
   },
   {
     "id": "alpha-2026-07-29",
@@ -100,13 +102,15 @@
     "added": "2026-10-07",
     "applies": "new",
     "date": "2026-03-01",
-    "detail": "Part of a full product rebuild the sources call Apex 4.0. An evaluation now expires if the target is not hit in 30 days.",
+    "detail": "Apex's help center confirms a one-time fee with 30 calendar days of access, after which the evaluation expires. The 1 March date comes from the two write-ups linked here.",
     "firm": "Apex Trader Funding",
     "source2_name": "PropFirmMap",
     "source2_url": "https://propfirmmap.com/blog/apex-trader-funding-review-2026-payouts-profit-split-otp",
     "source_name": "Curved Trading",
     "source_url": "https://curvedtrading.com/articles/en/reviews/apex-trader-funding-review/",
-    "title": "Monthly evaluation subscriptions replaced by a one-time fee with 30 days to pass"
+    "title": "Monthly evaluation subscriptions replaced by a one-time fee with 30 days to pass",
+    "confirmed": true,
+    "official_url": "https://apextraderfunding.com/help-center/billing/evaluation-plan-fees-and-access-explained/"
   },
   {
     "id": "lucid-2026-02-27",
