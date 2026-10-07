@@ -273,7 +273,7 @@ input[type="number"] { font-family: var(--mono); font-variant-numeric: tabular-n
   font-variant-numeric: tabular-nums;
 }
 .small { font-size: 0.85rem; color: var(--muted); margin: 0; overflow-wrap: anywhere; }
-footer { border-top: 1px solid var(--line); padding-top: 1rem; }
+footer { border-top: 1px solid var(--line); padding-top: 1rem; display: flex; flex-direction: column; gap: 0.6rem; }
 </style>
 </head>
 <body>
@@ -342,6 +342,7 @@ footer { border-top: 1px solid var(--line); padding-top: 1rem; }
   </section>
 
   <footer>
+    <p class="small">New changes are also posted by an automated account on X: <a href="https://x.com/PropRuleWatch" target="_blank" rel="noopener noreferrer">@PropRuleWatch</a>.</p>
     <p class="small">This page is not affiliated with any prop firm. Firms calculate consistency in different ways, and some apply it only in the evaluation or only once funded. Your firm's own dashboard and written rules decide the outcome.</p>
   </footer>
 </div>
